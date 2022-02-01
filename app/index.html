@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <title>ToDoリスト</title>
+</head>
+<body>
+  <div id="wrapper">
+    <h1>ToDoリスト</h1>
+    <div id="app" v-cloak>
+      <form @submit.prevent="addItem">
+        <input type="text" v-model="item" ref="editor" class="form-control">
+        <button @click="setItems" type="submit">{{changeButtonText}}</button>
+      </form>
+
+      <ul>
+        <li v-for="memo in memos" :key="memo.id">
+          <span id="memo_list">{{ memo.body }}</span>
+          <button @click="deleteItem(memo.id)">削除</button>
+          <button @click="editItem(memo.id)">編集</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script type="text/javascript" src="memo_crud.js"></script>
+</body>
+</html>
